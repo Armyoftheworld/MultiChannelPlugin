@@ -1,0 +1,24 @@
+apply plugin: 'groovy'
+apply plugin: 'kotlin'
+apply plugin: 'maven'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        //这里的url可以换成自己的仓库地址
+        repository(url: uri('E:\\mavenRepository'))
+        //compile "com.army.plugin:multichannelpackaging:0.0.1"
+        pom.version = "0.0.3"
+        pom.artifactId = "multichannelpackaging"
+        pom.groupId = "com.army.plugin"
+    }
+}
+
