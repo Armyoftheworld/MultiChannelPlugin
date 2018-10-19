@@ -32,3 +32,11 @@ val APK_SIGNING_BLOCK_MAGIC =
  * APK 签名方案 v2 分块的id
  */
 val V2_ID = 0x7109871A
+/**
+ * 自定义的v2签名的apk的渠道信息的id
+ */
+val CHANNEL_ID = 0x7109871F
+/**
+ * end_of_central_directory里核心目录开始位置相对于archive开始位置的偏移量
+ */
+val EOCD_CD_INDEX_OFFSET = 16

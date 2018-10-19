@@ -1,5 +1,6 @@
 package com.army.plugin
 
+import java.io.File
 import java.nio.ByteBuffer
 
 /**
@@ -9,6 +10,7 @@ import java.nio.ByteBuffer
  * @description
  */
 class Apk {
+    var file: File? = null
     var eocd: EOCD? = null
     var v2SignBlock: V2SignBlock? = null
     var isV1: Boolean = false

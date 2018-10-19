@@ -2,6 +2,9 @@
 
 buildscript {
     ext.kotlin_version = '1.2.71'
+    ext.deps = [
+            multichannelpackaging : "com.army.plugin:multichannelpackaging:0.0.15"
+    ]
     repositories {
         maven {
             url 'file://E://mavenRepository'
@@ -12,7 +15,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.army.plugin:multichannelpackaging:0.0.3"
+        classpath deps.multichannelpackaging
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -20,6 +23,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url 'file://E://mavenRepository'
+        }
         google()
         jcenter()
         mavenCentral()

@@ -11,7 +11,7 @@ import java.util.jar.JarFile
  * @author Army
  * @version V_1.0.0
  * @date 2018/10/18
- * @description
+ * @description 解析apk
  * 看官方文档https://source.android.com/security/apksigning/v2和
  * https://android.googlesource.com/platform/build/+/android-7.1.1_r46/tools/signapk/src/com/android/signapk/ApkSignerV2.java
  * EOCD的组成部分看end_of_central_directory.png
@@ -20,6 +20,7 @@ object ApkParser {
 
     fun parse(file: File): Apk {
         val apk = Apk()
+        apk.file = file
         var randomAccessFile: RandomAccessFile? = null
         try {
             randomAccessFile = RandomAccessFile(file, "r")
@@ -117,9 +118,9 @@ object ApkParser {
                 val map = linkedMapOf<Int, ByteBuffer>()
                 //8和16是size和magic的大小
                 while (v2SignBuffer.position() < v2SignBuffer.capacity() - 8 - 16) {
-                    v2SignBuffer.getLong()
+                    val idValueSize = v2SignBuffer.getLong()
                     val id = v2SignBuffer.getInt()
-                    val value = ByteBuffer.allocate(4)
+                    val value = ByteBuffer.allocate((idValueSize - 4).toInt())
                     value.order(ByteOrder.LITTLE_ENDIAN)
                     v2SignBuffer.get(value.array())
                     map[id] = value
