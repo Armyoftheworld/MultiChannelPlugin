@@ -14,7 +14,7 @@ dependencies {
 uploadArchives {
     repositories.mavenDeployer {
         //这里的url可以换成自己的仓库地址
-        repository(url: uri('E:\\mavenRepository'))
+        repository(url: uri("${rootProject.projectDir.absolutePath}${File.separator}mavenRepository"))
         //compile "com.army.plugin:multichannelpackaging:0.0.1"
         pom.version = "0.0.15"
         pom.artifactId = "multichannelpackaging"

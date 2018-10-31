@@ -7,7 +7,7 @@ buildscript {
     ]
     repositories {
         maven {
-            url 'file://E://mavenRepository'
+            url "file://${rootProject.projectDir.absolutePath}${File.separator}mavenRepository"
         }
         google()
         jcenter()
@@ -24,7 +24,7 @@ buildscript {
 allprojects {
     repositories {
         maven {
-            url 'file://E://mavenRepository'
+            url "file://${rootProject.projectDir.absolutePath}${File.separator}mavenRepository"
         }
         google()
         jcenter()
